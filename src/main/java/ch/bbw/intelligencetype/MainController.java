@@ -16,13 +16,11 @@ public class MainController {
 
     @GetMapping("/test")
     public String test(Model model){
-        User user = new User();
         ArrayList<Questions> questions = new ArrayList<>();
         for (Questions question : Questions.values()){
             questions.add(question);
         }
         model.addAttribute("questions", questions);
-        model.addAttribute(user);
         return "test";
     }
 

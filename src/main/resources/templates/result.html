@@ -28,8 +28,6 @@
         <div>
             <canvas id="myChart" class="chart"></canvas>
             <script>
-                
-
                 const labels = [
                     'kinaesthetic',
                     'linguistic',
@@ -45,7 +43,7 @@
                     labels: labels,
                     datasets: [{
                         label: 'your results',
-                        data: [0, 10, 5, 2, 20, 30, 45, 60],
+                        data: [user.kinaesthetic, user.linguistic, user.naturalistic, user.visual, user.musical, user.intrapersonal, user.interpersonal, user.logical],
                         fill: true,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgb(255, 99, 132)',
