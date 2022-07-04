@@ -2,14 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Intelligence results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel=”stylesheet”
+          href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow”
+          integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
+    <link rel="stylesheet" href="resources/css/stylesheet.css">
+    <link rel="script" href="resources/javascript/chartData.js">
 </head>
-<body>
+<body class="styled">
+<section class="header">
+    <div class="container">
+        <div>
+            <p class="text">
+                Intelligence Test
+            </p>
+        </div>
+    </div>
+</section>
 
+<div class="separator"></div>
 
+<div class="container">
+    <div>
+        <div>
+            <canvas id="myChart" class="chart"></canvas>
+            <script>
+                
 
+                const labels = [
+                    'kinaesthetic',
+                    'linguistic',
+                    'naturalistic',
+                    'visual',
+                    'musical',
+                    'intrapersonal',
+                    'interpersonal',
+                    'logical',
+                ];
 
-<button type="button">Click Me!</button>
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'your results',
+                        data: [0, 10, 5, 2, 20, 30, 45, 60],
+                        fill: true,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        pointBackgroundColor: 'rgb(255, 99, 132)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                    }]
+                };
+
+                const config = {
+                    type: 'radar',
+                    data: data,
+                    options: {
+                        elements: {
+                            line: {
+                                borderWidth: 3
+                            }
+                        }
+                    },
+                };
+            </script>
+            <script>
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            </script>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

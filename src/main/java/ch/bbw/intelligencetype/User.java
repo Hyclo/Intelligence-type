@@ -35,10 +35,10 @@ public class User {
                 naturalistic = naturalistic + value;
                 break;
             case 4:
-                visual = visual + value;
+                musical = musical + value;
                 break;
             case 5:
-                musical = musical + value;
+                visual = visual + value;
                 break;
             case 6:
                 intrapersonal = intrapersonal + value;

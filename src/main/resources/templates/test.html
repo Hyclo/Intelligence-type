@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Test</title>
+    <meta charset="UTF-8">
+    <title>Intelligence Test</title>
+    <link rel=”stylesheet”
+          href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow”
+          integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
+    <link rel="stylesheet" href="resources/css/stylesheet.css">
 </head>
-<body>
+<body class="styled">
+<section class="header">
+    <div class="container">
+        <div>
+            <p class="text">
+                Intelligence Test
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="separator"></div>
+
+<div class="container"
+     th:each="question : ${questions}">
+
+    <div class="question">
+        <h2 th:text="${question.getQuestion}" class="title"></h2>
+        <div class="container">
+            <div>
+                <input th:name="${question}" type="radio" class="normalText">Passt sehr</input>
+            </div>
+            <div>
+                <input th:name="${question}" type="radio" class="normalText">Passt eher schon</input>
+            </div>
+            <div>
+                <input th:name="${question}" type="radio" class="normalText">keine Meinung</input>
+            </div>
+            <div>
+                <input th:name="${question}" type="radio" class="normalText">Passt eher nicht</input>
+            </div>
+            <div>
+                <input th:name="${question}" type="radio" class="normalText">Passt gar nicht</input>
+            </div>
+        </div>
+        <div class="smallseparator"></div>
+    </div>
+</div>
+
+<div class="smallseparator"></div>
+
+<div class="container">
+    <div>
+        <button class="button" role="button" onclick="window.location.href='result'">Get your results</button>
+    </div>
+</div>
+
+<div class="smallseparator"></div>
 
 </body>
 </html>
