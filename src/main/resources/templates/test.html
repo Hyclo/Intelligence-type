@@ -66,15 +66,44 @@
             var naturalistic = 0;
             var kinaesthetic = 0;
 
+
             function functions() {
                 calculate();
+                validateVariables();
                 for (let index = 0; index < 40; index++) {
                     let doc = document.getElementById(index.toString())
                     doc.hidden = true;
                 }
                 let button = document.getElementById("resultButton");
-                button.hidden =true;
+                button.hidden = true;
                 initchart();
+            }
+
+            function validateVariables() {
+                if (kinaesthetic < 0) {
+                    kinaesthetic = 0;
+                }
+                if (logical < 0) {
+                    logical = 0;
+                }
+                if (linguistic < 0) {
+                    linguistic = 0;
+                }
+                if (musical < 0) {
+                    musical = 0;
+                }
+                if (intrapersonal < 0) {
+                    intrapersonal = 0;
+                }
+                if (interpersonal < 0) {
+                    interpersonal = 0;
+                }
+                if (visual < 0) {
+                    visual = 0;
+                }
+                if (naturalistic < 0) {
+                    naturalistic = 0;
+                }
             }
 
             function calculate() {
@@ -151,12 +180,21 @@
                         data: [kinaesthetic, linguistic, naturalistic, visual, musical, intrapersonal, interpersonal, logical],
                         fill: true,
                         borderWidth: 1,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        pointBackgroundColor: 'rgb(255, 99, 132)',
+                        backgroundColor: [
+                            'rgb(77,0,121)',
+                            'rgb(115,7,178)',
+                            'rgb(145,74,199)',
+                            'rgb(12,47,117)',
+                            'rgb(32,87,194)',
+                            'rgb(66,107,189)',
+                            'rgb(8,108,115)',
+                            'rgb(33,179,190)',
+                        ],
+                        borderColor: 'rgb(0, 0, 0)',
+                        pointBackgroundColor: 'rgb(0, 0, 0)',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                        pointHoverBorderColor: 'rgb(0, 0, 0)'
                     }]
                 };
 
@@ -173,9 +211,13 @@
                     },
                     scales: {
                         r: {
+                            min: 0,
+                            max: 10,
+                            beginAtZero: true,
+                            stepSize: 1,
                             pointLabels: {
                                 font: {
-                                    size: 10
+                                    size: 15
                                 }
                             }
                         }
@@ -183,7 +225,7 @@
                 };
 
                 const config = {
-                    type: 'radar',
+                    type: 'polarArea',
                     data: data,
                     options: chartOptions
                 };
