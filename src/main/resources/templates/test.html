@@ -31,19 +31,19 @@
         <h2 th:text="${question.getQuestion}" class="title"></h2>
         <div class="container">
             <div>
-                <input th:name="${question.ordinal()}" type="radio" class="normalText">Passt gar nicht</input>
+                <input th:name="${question.ordinal()}" type="radio" class="normalText" id="-2">Passt gar nicht</input>
             </div>
             <div>
-                <input th:name="${question.ordinal()}" type="radio" class="normalText">Passt eher nicht</input>
+                <input th:name="${question.ordinal()}" type="radio" class="normalText" id="-1">Passt eher nicht</input>
             </div>
             <div>
-                <input th:name="${question.ordinal()}" type="radio" class="normalText">keine Meinung</input>
+                <input th:name="${question.ordinal()}" type="radio" class="normalText" id="+0">keine Meinung</input>
             </div>
             <div>
-                <input th:name="${question.ordinal()}" type="radio" class="normalText">Passt eher schon</input>
+                <input th:name="${question.ordinal()}" type="radio" class="normalText" id="+1">Passt eher schon</input>
             </div>
             <div>
-                <input th:name="${question.ordinal()}" type="radio" class="normalText">Passt sehr</input>
+                <input th:name="${question.ordinal()}" type="radio" class="normalText" id="+2">Passt sehr</input>
             </div>
         </div>
         <div class="smallseparator"></div>
@@ -83,54 +83,53 @@
                     if (index < 5) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                kinaesthetic += parseInt(values[i].value)
+                                kinaesthetic += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 4 && index < 10) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                linguistic += parseInt(values[i].value)
+                                linguistic += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 9 && index < 15) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                naturalistic += parseInt(values[i].value)
+                                naturalistic += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 14 && index < 20) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                musical += parseInt(values[i].value)
+                                musical += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 19 && index < 25) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                visual += parseInt(values[i].value)
+                                visual += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 24 && index < 30) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                intrapersonal += parseInt(values[i].value)
+                                intrapersonal += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 29 && index < 35) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                interpersonal += parseInt(values[i].value)
+                                interpersonal += parseInt(values[i].id)
                             }
                         }
                     } else if (index > 34 && index < 40) {
                         for (let i = 0; i < values.length; i++) {
                             if (values[i].checked) {
-                                logical += parseInt(values[i].value)
+                                logical += parseInt(values[i].id)
                             }
                         }
                     }
                 }
-                console.log(kinaesthetic);
             }
 
             function initchart() {

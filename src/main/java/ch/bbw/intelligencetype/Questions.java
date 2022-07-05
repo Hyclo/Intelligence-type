@@ -3,7 +3,7 @@ package ch.bbw.intelligencetype;
 public enum Questions {
 
     KINAESTHETIC1("Ich bin ein Ass im Multitasking.", 1),
-    KINAESTHETIC2("Ich bin ein Ass im Multitasking.", 1),
+    KINAESTHETIC2("Meine Reaktionszeit ist höher als bei andern.", 1),
     KINAESTHETIC3("Ich fühle mich im Gleichgewicht mit meinem Körper.", 1),
     KINAESTHETIC4("Nichts kann mich schnell aus der Fassung bringen.", 1),
     KINAESTHETIC5("Sport ist ein wichtiger Teil meines Lebens.", 1),
