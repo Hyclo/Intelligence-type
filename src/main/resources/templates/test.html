@@ -5,11 +5,11 @@
     <title>Test</title>
     <meta charset="UTF-8">
     <title>Intelligence Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel=”stylesheet”
           href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow”
           integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
     <link rel="stylesheet" href="resources/css/stylesheet.css">
-    <link rel="script" href="resources/javascript/chartData.js">
 </head>
 <body class="styled">
 <section class="header">
@@ -27,7 +27,7 @@
 <div class="container"
      th:each="question : ${questions}">
 
-    <div class="question">
+    <div class="question" th:id="${question.ordinal()}">
         <h2 th:text="${question.getQuestion}" class="title"></h2>
         <div class="container">
             <div>
@@ -54,77 +54,145 @@
 
 <div class="container">
     <div>
-        <button class="button" role="button" onclick="functions()">Get your results</button>
-        <script src="resources/javascript/chartData.js"></script>
+        <button class="button" role="button" onclick="functions()" id="resultButton">Get your result</button>
+        <canvas id="myChart" class="chart"></canvas>
         <script>
-            let interpersonal = 0;
-            let logical = 0;
-            let linguistic = 0;
-            let musical = 0;
-            let intrapersonal = 0;
-            let visual = 0;
-            let naturalistic = 0;
-            let kinaesthetic = 0;
+            var interpersonal = 0;
+            var logical = 0;
+            var linguistic = 0;
+            var musical = 0;
+            var intrapersonal = 0;
+            var visual = 0;
+            var naturalistic = 0;
+            var kinaesthetic = 0;
 
-            function functions(){
+            function functions() {
                 calculate();
-                window.open(window.location + "/result");
+                for (let index = 0; index < 40; index++) {
+                    let doc = document.getElementById(index.toString())
+                    doc.hidden = true;
+                }
+                let button = document.getElementById("resultButton");
+                button.hidden =true;
+                initchart();
             }
 
             function calculate() {
-                for (let index = 0; index < 40; index++){
-                    const values = document.getElementsByName(index.toString())
-                    if (index < 5){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
+                for (let index = 0; index < 40; index++) {
+                    let values = document.getElementsByName(index.toString())
+                    if (index < 5) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
                                 kinaesthetic += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 4 && index < 10){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                linguistic+= parseInt(values[i].value)
+                    } else if (index > 4 && index < 10) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                linguistic += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 9 && index < 15){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                naturalistic+= parseInt(values[i].value)
+                    } else if (index > 9 && index < 15) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                naturalistic += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 14 && index < 20){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                musical+= parseInt(values[i].value)
+                    } else if (index > 14 && index < 20) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                musical += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 19 && index < 25){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                visual+= parseInt(values[i].value)
-                            }3
-                        }
-                    } else if (index > 24 && index < 30){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                intrapersonal+= parseInt(values[i].value)
+                    } else if (index > 19 && index < 25) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                visual += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 29 && index < 35){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                interpersonal+= parseInt(values[i].value)
+                    } else if (index > 24 && index < 30) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                intrapersonal += parseInt(values[i].value)
                             }
                         }
-                    } else if (index > 34 && index < 40){
-                        for(i = 0; i < values.length; i++) {
-                            if(values[i].checked){
-                                logical+= parseInt(values[i].value)
+                    } else if (index > 29 && index < 35) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                interpersonal += parseInt(values[i].value)
+                            }
+                        }
+                    } else if (index > 34 && index < 40) {
+                        for (let i = 0; i < values.length; i++) {
+                            if (values[i].checked) {
+                                logical += parseInt(values[i].value)
                             }
                         }
                     }
                 }
-                user(kinaesthetic, linguistic, naturalistic, visual, musical, intrapersonal, interpersonal, logical)
+                console.log(kinaesthetic);
+            }
+
+            function initchart() {
+                const labels = [
+                    'kinaesthetic',
+                    'linguistic',
+                    'naturalistic',
+                    'visual',
+                    'musical',
+                    'intrapersonal',
+                    'interpersonal',
+                    'logical',
+                ];
+
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'your results',
+                        data: [kinaesthetic, linguistic, naturalistic, visual, musical, intrapersonal, interpersonal, logical],
+                        fill: true,
+                        borderWidth: 1,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        pointBackgroundColor: 'rgb(255, 99, 132)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                    }]
+                };
+
+                var chartOptions = {
+                    plugins: {
+                        title: {
+                            display: true,
+                            align: "start",
+                            text: "Your test results"
+                        },
+                        legend: {
+                            align: "start"
+                        }
+                    },
+                    scales: {
+                        r: {
+                            pointLabels: {
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                };
+
+                const config = {
+                    type: 'radar',
+                    data: data,
+                    options: chartOptions
+                };
+
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
             }
         </script>
     </div>
