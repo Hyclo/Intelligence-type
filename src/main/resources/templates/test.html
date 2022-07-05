@@ -66,8 +66,10 @@
             var naturalistic = 0;
             var kinaesthetic = 0;
 
+
             function functions() {
                 calculate();
+                validateVariables();
                 for (let index = 0; index < 40; index++) {
                     let doc = document.getElementById(index.toString())
                     doc.hidden = true;
@@ -75,6 +77,33 @@
                 let button = document.getElementById("resultButton");
                 button.hidden =true;
                 initchart();
+            }
+
+            function validateVariables(){
+                if (kinaesthetic < 0){
+                    kinaesthetic = 0;
+                }
+                if (logical < 0){
+                    logical = 0;
+                }
+                if (linguistic < 0){
+                    linguistic = 0;
+                }
+                if (musical < 0){
+                    musical = 0;
+                }
+                if (intrapersonal < 0){
+                    intrapersonal = 0;
+                }
+                if (interpersonal < 0){
+                    interpersonal = 0;
+                }
+                if (visual < 0){
+                    visual = 0;
+                }
+                if (naturalistic < 0){
+                    naturalistic = 0;
+                }
             }
 
             function calculate() {
