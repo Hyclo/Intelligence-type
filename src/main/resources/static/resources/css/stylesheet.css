@@ -2,7 +2,7 @@
 
 body.styled {
     margin: 0px;
-    background: aliceblue;
+    background: #383a3d;
 }
 
 .header {
@@ -150,4 +150,11 @@ input[type='radio']:checked:after {
 .chart {
     width: 30vw;
     height: 20vh;
+}
+.squidimg{
+    width: 80vm;
+    height: 80vh;
+    position: fixed;
+    margin-left: 30%;
+
 }

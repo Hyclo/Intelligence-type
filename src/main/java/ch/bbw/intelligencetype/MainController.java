@@ -11,7 +11,7 @@ public class MainController {
 
     @GetMapping("")
     public String home(){
-        return "intelligence-template";
+        return "index";
     }
 
     @GetMapping("/test")
@@ -24,6 +24,10 @@ public class MainController {
         return "test";
     }
 
+    @GetMapping("/types")
+    public String types(){
+        return "types";
+    }
     @GetMapping("/result")
     public String result(){
         return "result";
