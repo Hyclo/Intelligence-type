@@ -152,6 +152,6 @@ input[type='radio']:checked:after {
     height: 35vh;
 }
 .squidimg{
-    width: 50%;
-    height: 50%;
+    width: 40vw;
+    height: 30vh;
 }
