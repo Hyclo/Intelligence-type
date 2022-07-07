@@ -174,7 +174,6 @@
                 const data = {
                     labels: labels,
                     datasets: [{
-                        label: 'your results',
                         data: [kinaesthetic, linguistic, naturalistic, visual, musical, intrapersonal, interpersonal, logical],
                         fill: true,
                         borderWidth: 1,
@@ -197,16 +196,6 @@
                 };
 
                 var chartOptions = {
-                    plugins: {
-                        title: {
-                            display: true,
-                            align: "start",
-                            text: "Your test results"
-                        },
-                        legend: {
-                            align: "start"
-                        }
-                    },
                     scales: {
                         r: {
                             min: 0,
