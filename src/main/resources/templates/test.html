@@ -160,6 +160,7 @@
             }
 
             function initchart() {
+                Chart.defaults.color = "#ffffff";
                 const labels = [
                     'kinaesthetic',
                     'linguistic',
@@ -198,6 +199,9 @@
                 var chartOptions = {
                     scales: {
                         r: {
+                            grid: {
+                                color: "white"
+                            },
                             min: 0,
                             max: 10,
                             beginAtZero: true,
